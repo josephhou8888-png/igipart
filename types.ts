@@ -1,9 +1,12 @@
+
 import React from 'react';
+import { User as SupabaseUser } from '@supabase/supabase-js';
 
 export interface User {
   id: string;
   name: string;
   email: string;
+  // password is not stored in the user profile table, it's handled by Supabase Auth
   wallet: string;
   rank: number; // L1-L9 represented as 1-9
   uplineId: string | null;
@@ -18,6 +21,7 @@ export interface User {
   role: 'user' | 'admin';
   achievements: string[]; // Stores achievement IDs now, not names
   joinDate: string;
+  created_at: string;
 }
 
 export interface Project {
@@ -60,6 +64,7 @@ export interface Project {
   assetCustodian: string;
   assetManager: string;
   oracles: string;
+  created_at: string;
 }
 
 export interface InvestmentPool {
@@ -68,6 +73,7 @@ export interface InvestmentPool {
   description: string;
   apy: number; // Annual Percentage Yield
   minInvestment: number;
+  created_at: string;
 }
 
 
@@ -83,6 +89,7 @@ export interface Investment {
   poolName?: string;
   totalProfitEarned: number;
   source: 'deposit' | 'profit_reinvestment';
+  created_at: string;
 }
 
 export interface Bonus {
@@ -93,6 +100,7 @@ export interface Bonus {
   amount: number;
   date: string;
   read?: boolean;
+  created_at: string;
 }
 
 export interface Transaction {
@@ -106,6 +114,7 @@ export interface Transaction {
   investmentId?: string;
   status?: 'pending' | 'completed' | 'rejected'; // For deposits
   rejectionReason?: string; // For rejected deposits
+  created_at: string;
 }
 
 export interface Rank {
@@ -114,6 +123,7 @@ export interface Rank {
   minAccounts: number;
   newlyQualified: number;
   fixedBonus: number;
+  created_at: string;
 }
 
 export interface NewsPost {
@@ -122,6 +132,7 @@ export interface NewsPost {
   content: string;
   date: string;
   author: string;
+  created_at: string;
 }
 
 export interface Achievement {
@@ -148,6 +159,7 @@ export interface Notification {
   message: string;
   date: string;
   read?: boolean;
+  created_at: string;
 }
 
 export interface TreasuryWallets {

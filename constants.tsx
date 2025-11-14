@@ -163,27 +163,29 @@ export const INITIAL_TEAM_BUILDER_BONUS_RATES = [
 
 
 export const INITIAL_RANKS: Rank[] = [
-  { level: 1, name: 'L1', minAccounts: 15, newlyQualified: 12, fixedBonus: 500 },
-  { level: 2, name: 'L2', minAccounts: 30, newlyQualified: 25, fixedBonus: 1000 },
-  { level: 3, name: 'L3', minAccounts: 50, newlyQualified: 40, fixedBonus: 2000 },
-  { level: 4, name: 'L4', minAccounts: 100, newlyQualified: 80, fixedBonus: 5000 },
-  { level: 5, name: 'L5', minAccounts: 250, newlyQualified: 200, fixedBonus: 10000 },
-  { level: 6, name: 'L6', minAccounts: 500, newlyQualified: 400, fixedBonus: 20000 },
-  { level: 7, name: 'L7', minAccounts: 1000, newlyQualified: 800, fixedBonus: 40000 },
-  { level: 8, name: 'L8', minAccounts: 2500, newlyQualified: 1000, fixedBonus: 60000 },
-  { level: 9, name: 'L9', minAccounts: 10000, newlyQualified: 200, fixedBonus: 100000 },
+  // FIX: Added missing 'created_at' property to satisfy the Rank type.
+  { level: 1, name: 'L1', minAccounts: 15, newlyQualified: 12, fixedBonus: 500, created_at: '2023-01-01T00:00:00Z' },
+  { level: 2, name: 'L2', minAccounts: 30, newlyQualified: 25, fixedBonus: 1000, created_at: '2023-01-01T00:00:00Z' },
+  { level: 3, name: 'L3', minAccounts: 50, newlyQualified: 40, fixedBonus: 2000, created_at: '2023-01-01T00:00:00Z' },
+  { level: 4, name: 'L4', minAccounts: 100, newlyQualified: 80, fixedBonus: 5000, created_at: '2023-01-01T00:00:00Z' },
+  { level: 5, name: 'L5', minAccounts: 250, newlyQualified: 200, fixedBonus: 10000, created_at: '2023-01-01T00:00:00Z' },
+  { level: 6, name: 'L6', minAccounts: 500, newlyQualified: 400, fixedBonus: 20000, created_at: '2023-01-01T00:00:00Z' },
+  { level: 7, name: 'L7', minAccounts: 1000, newlyQualified: 800, fixedBonus: 40000, created_at: '2023-01-01T00:00:00Z' },
+  { level: 8, name: 'L8', minAccounts: 2500, newlyQualified: 1000, fixedBonus: 60000, created_at: '2023-01-01T00:00:00Z' },
+  { level: 9, name: 'L9', minAccounts: 10000, newlyQualified: 200, fixedBonus: 100000, created_at: '2023-01-01T00:00:00Z' },
 ];
 
 export const MOCK_USERS: User[] = [
-  { id: 'admin-0', name: 'Admin User', email: 'admin@igipartnership.com', wallet: '0x...admin', rank: 9, uplineId: null, referralCode: 'ADMIN001', totalInvestment: 0, totalDownline: 0, monthlyIncome: 0, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1/200/200', country: 'System', isFrozen: false, role: 'admin', achievements: [], joinDate: '2022-12-01' },
-  { id: 'user-1', name: 'Alex Johnson', email: 'alex@example.com', wallet: '0x...a1b2', rank: 5, uplineId: null, referralCode: 'ALEX123', totalInvestment: 25000, totalDownline: 260, monthlyIncome: 12500, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1005/200/200', country: 'USA', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-01-15' },
-  { id: 'user-2', name: 'Maria Garcia', email: 'maria@example.com', wallet: '0x...c3d4', rank: 4, uplineId: 'user-1', referralCode: 'MARIA456', totalInvestment: 15000, totalDownline: 110, monthlyIncome: 7500, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1027/200/200', country: 'Spain', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-02-20' },
-  { id: 'user-3', name: 'Chen Wei', email: 'chen@example.com', wallet: '0x...e5f6', rank: 4, uplineId: 'user-1', referralCode: 'CHEN789', totalInvestment: 18000, totalDownline: 95, monthlyIncome: 6800, kycStatus: 'Pending', avatar: 'https://picsum.photos/id/1011/200/200', country: 'China', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-03-10' },
-  { id: 'user-4', name: 'Ben Carter', email: 'ben@example.com', wallet: '0x...g7h8', rank: 3, uplineId: 'user-2', referralCode: 'BEN101', totalInvestment: 8000, totalDownline: 40, monthlyIncome: 3200, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1012/200/200', country: 'UK', isFrozen: true, role: 'user', achievements: [], joinDate: '2023-04-01' },
-  { id: 'user-5', name: 'Sophia Loren', email: 'sophia@example.com', wallet: '0x...i9j0', rank: 3, uplineId: 'user-2', referralCode: 'SOPHIA22', totalInvestment: 9500, totalDownline: 50, monthlyIncome: 4100, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1013/200/200', country: 'Italy', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-05-18' },
-  { id: 'user-6', name: 'Hiroshi Tanaka', email: 'hiroshi@example.com', wallet: '0x...k1l2', rank: 2, uplineId: 'user-3', referralCode: 'HIRO33', totalInvestment: 5000, totalDownline: 20, monthlyIncome: 1500, kycStatus: 'Rejected', avatar: 'https://picsum.photos/id/1015/200/200', country: 'Japan', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-06-22' },
-  { id: 'user-7', name: 'Fatima Al-Sayed', email: 'fatima@example.com', wallet: '0x...m3n4', rank: 1, uplineId: 'user-4', referralCode: 'FATIMA44', totalInvestment: 3000, totalDownline: 15, monthlyIncome: 600, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1016/200/200', country: 'Egypt', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-08-11' },
-  { id: 'user-8', name: 'Liam O\'Connell', email: 'liam@example.com', wallet: '0x...o5p6', rank: 1, uplineId: 'user-4', referralCode: 'LIAM55', totalInvestment: 3500, totalDownline: 12, monthlyIncome: 550, kycStatus: 'Not Submitted', avatar: 'https://picsum.photos/id/1018/200/200', country: 'Ireland', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-09-05' },
+  // FIX: Removed 'password' property and added 'created_at' to satisfy the User type.
+  { id: 'admin-0', name: 'Admin User', email: 'admin@igipartnership.com', wallet: '0x...admin', rank: 9, uplineId: null, referralCode: 'ADMIN001', totalInvestment: 0, totalDownline: 0, monthlyIncome: 0, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1/200/200', country: 'System', isFrozen: false, role: 'admin', achievements: [], joinDate: '2022-12-01', created_at: '2022-12-01T00:00:00Z' },
+  { id: 'user-1', name: 'Alex Johnson', email: 'alex@example.com', wallet: '0x...a1b2', rank: 5, uplineId: null, referralCode: 'ALEX123', totalInvestment: 25000, totalDownline: 260, monthlyIncome: 12500, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1005/200/200', country: 'USA', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-01-15', created_at: '2023-01-15T00:00:00Z' },
+  { id: 'user-2', name: 'Maria Garcia', email: 'maria@example.com', wallet: '0x...c3d4', rank: 4, uplineId: 'user-1', referralCode: 'MARIA456', totalInvestment: 15000, totalDownline: 110, monthlyIncome: 7500, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1027/200/200', country: 'Spain', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-02-20', created_at: '2023-02-20T00:00:00Z' },
+  { id: 'user-3', name: 'Chen Wei', email: 'chen@example.com', wallet: '0x...e5f6', rank: 4, uplineId: 'user-1', referralCode: 'CHEN789', totalInvestment: 18000, totalDownline: 95, monthlyIncome: 6800, kycStatus: 'Pending', avatar: 'https://picsum.photos/id/1011/200/200', country: 'China', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-03-10', created_at: '2023-03-10T00:00:00Z' },
+  { id: 'user-4', name: 'Ben Carter', email: 'ben@example.com', wallet: '0x...g7h8', rank: 3, uplineId: 'user-2', referralCode: 'BEN101', totalInvestment: 8000, totalDownline: 40, monthlyIncome: 3200, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1012/200/200', country: 'UK', isFrozen: true, role: 'user', achievements: [], joinDate: '2023-04-01', created_at: '2023-04-01T00:00:00Z' },
+  { id: 'user-5', name: 'Sophia Loren', email: 'sophia@example.com', wallet: '0x...i9j0', rank: 3, uplineId: 'user-2', referralCode: 'SOPHIA22', totalInvestment: 9500, totalDownline: 50, monthlyIncome: 4100, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1013/200/200', country: 'Italy', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-05-18', created_at: '2023-05-18T00:00:00Z' },
+  { id: 'user-6', name: 'Hiroshi Tanaka', email: 'hiroshi@example.com', wallet: '0x...k1l2', rank: 2, uplineId: 'user-3', referralCode: 'HIRO33', totalInvestment: 5000, totalDownline: 20, monthlyIncome: 1500, kycStatus: 'Rejected', avatar: 'https://picsum.photos/id/1015/200/200', country: 'Japan', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-06-22', created_at: '2023-06-22T00:00:00Z' },
+  { id: 'user-7', name: 'Fatima Al-Sayed', email: 'fatima@example.com', wallet: '0x...m3n4', rank: 1, uplineId: 'user-4', referralCode: 'FATIMA44', totalInvestment: 3000, totalDownline: 15, monthlyIncome: 600, kycStatus: 'Verified', avatar: 'https://picsum.photos/id/1016/200/200', country: 'Egypt', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-08-11', created_at: '2023-08-11T00:00:00Z' },
+  { id: 'user-8', name: 'Liam O\'Connell', email: 'liam@example.com', wallet: '0x...o5p6', rank: 1, uplineId: 'user-4', referralCode: 'LIAM55', totalInvestment: 3500, totalDownline: 12, monthlyIncome: 550, kycStatus: 'Not Submitted', avatar: 'https://picsum.photos/id/1018/200/200', country: 'Ireland', isFrozen: false, role: 'user', achievements: [], joinDate: '2023-09-05', created_at: '2023-09-05T00:00:00Z' },
 ];
 
 export const MOCK_PROJECTS: Project[] = [
@@ -217,6 +219,8 @@ export const MOCK_PROJECTS: Project[] = [
         assetCustodian: 'RealTrust Property Management',
         assetManager: 'IGI Asset Management',
         oracles: 'Chainlink for property valuation updates.',
+        // FIX: Added missing 'created_at' property to satisfy the Project type.
+        created_at: '2023-01-01T00:00:00Z',
     },
     {
         id: 'proj-2',
@@ -248,45 +252,52 @@ export const MOCK_PROJECTS: Project[] = [
         assetCustodian: 'Geneva Freeport',
         assetManager: 'Fine Art Investments LLC',
         oracles: 'Not Applicable',
+        // FIX: Added missing 'created_at' property to satisfy the Project type.
+        created_at: '2023-01-01T00:00:00Z',
     },
 ];
 
 export const MOCK_INVESTMENT_POOLS: InvestmentPool[] = [
-  { id: 'pool-1', name: 'Global Growth Fund', description: 'A diversified portfolio of global equities aiming for long-term capital growth.', apy: 12.5, minInvestment: 5000 },
-  { id: 'pool-2', name: 'Stable Income Fund', description: 'Focuses on generating stable income through high-quality bonds and dividend stocks.', apy: 7.0, minInvestment: 10000 },
-  { id: 'pool-3', name: 'Tech Innovators Fund', description: 'Invests in disruptive technology companies with high growth potential.', apy: 18.0, minInvestment: 7500 },
+  // FIX: Added missing 'created_at' property to satisfy the InvestmentPool type.
+  { id: 'pool-1', name: 'Global Growth Fund', description: 'A diversified portfolio of global equities aiming for long-term capital growth.', apy: 12.5, minInvestment: 5000, created_at: '2023-01-01T00:00:00Z' },
+  { id: 'pool-2', name: 'Stable Income Fund', description: 'Focuses on generating stable income through high-quality bonds and dividend stocks.', apy: 7.0, minInvestment: 10000, created_at: '2023-01-01T00:00:00Z' },
+  { id: 'pool-3', name: 'Tech Innovators Fund', description: 'Invests in disruptive technology companies with high growth potential.', apy: 18.0, minInvestment: 7500, created_at: '2023-01-01T00:00:00Z' },
 ];
 
 export const MOCK_INVESTMENTS: Investment[] = [
-  { id: 'inv-1', userId: 'user-1', amount: 10000, date: '2023-10-15', status: 'Active', projectId: 'proj-1', projectName: 'Miami Luxury Apartments Token', totalProfitEarned: 0, source: 'profit_reinvestment' },
-  { id: 'inv-2', userId: 'user-1', amount: 15000, date: '2023-11-20', status: 'Active', projectId: 'proj-1', projectName: 'Miami Luxury Apartments Token', totalProfitEarned: 0, source: 'profit_reinvestment' },
-  { id: 'inv-3', userId: 'user-2', amount: 15000, date: '2023-10-25', status: 'Active', projectId: 'proj-2', projectName: 'Sunset Masterpiece Token', totalProfitEarned: 0, source: 'profit_reinvestment' },
-  { id: 'inv-4', userId: 'user-3', amount: 18000, date: '2023-11-05', status: 'Active', projectId: 'proj-1', projectName: 'Miami Luxury Apartments Token', totalProfitEarned: 0, source: 'profit_reinvestment' },
-  { id: 'inv-5', userId: 'user-4', amount: 8000, date: '2023-11-10', status: 'Active', projectId: 'proj-2', projectName: 'Sunset Masterpiece Token', totalProfitEarned: 0, source: 'profit_reinvestment' },
-  { id: 'inv-6', userId: 'user-5', amount: 9500, date: '2023-11-12', status: 'Active', projectId: 'proj-1', projectName: 'Miami Luxury Apartments Token', totalProfitEarned: 0, source: 'profit_reinvestment' },
-  { id: 'inv-7', userId: 'user-1', amount: 5000, date: '2023-11-15', status: 'Active', poolId: 'pool-1', poolName: 'Global Growth Fund', totalProfitEarned: 0, source: 'deposit' },
-  { id: 'inv-8', userId: 'user-2', amount: 10000, date: '2023-11-18', status: 'Active', poolId: 'pool-2', poolName: 'Stable Income Fund', totalProfitEarned: 0, source: 'deposit' },
+  // FIX: Added missing 'created_at' property to satisfy the Investment type.
+  { id: 'inv-1', userId: 'user-1', amount: 10000, date: '2023-10-15', status: 'Active', projectId: 'proj-1', projectName: 'Miami Luxury Apartments Token', totalProfitEarned: 0, source: 'profit_reinvestment', created_at: '2023-10-15T00:00:00Z' },
+  { id: 'inv-2', userId: 'user-1', amount: 15000, date: '2023-11-20', status: 'Active', projectId: 'proj-1', projectName: 'Miami Luxury Apartments Token', totalProfitEarned: 0, source: 'profit_reinvestment', created_at: '2023-11-20T00:00:00Z' },
+  { id: 'inv-3', userId: 'user-2', amount: 15000, date: '2023-10-25', status: 'Active', projectId: 'proj-2', projectName: 'Sunset Masterpiece Token', totalProfitEarned: 0, source: 'profit_reinvestment', created_at: '2023-10-25T00:00:00Z' },
+  { id: 'inv-4', userId: 'user-3', amount: 18000, date: '2023-11-05', status: 'Active', projectId: 'proj-1', projectName: 'Miami Luxury Apartments Token', totalProfitEarned: 0, source: 'profit_reinvestment', created_at: '2023-11-05T00:00:00Z' },
+  { id: 'inv-5', userId: 'user-4', amount: 8000, date: '2023-11-10', status: 'Active', projectId: 'proj-2', projectName: 'Sunset Masterpiece Token', totalProfitEarned: 0, source: 'profit_reinvestment', created_at: '2023-11-10T00:00:00Z' },
+  { id: 'inv-6', userId: 'user-5', amount: 9500, date: '2023-11-12', status: 'Active', projectId: 'proj-1', projectName: 'Miami Luxury Apartments Token', totalProfitEarned: 0, source: 'profit_reinvestment', created_at: '2023-11-12T00:00:00Z' },
+  { id: 'inv-7', userId: 'user-1', amount: 5000, date: '2023-11-15', status: 'Active', poolId: 'pool-1', poolName: 'Global Growth Fund', totalProfitEarned: 0, source: 'deposit', created_at: '2023-11-15T00:00:00Z' },
+  { id: 'inv-8', userId: 'user-2', amount: 10000, date: '2023-11-18', status: 'Active', poolId: 'pool-2', poolName: 'Stable Income Fund', totalProfitEarned: 0, source: 'deposit', created_at: '2023-11-18T00:00:00Z' },
 ];
 
 export const MOCK_TRANSACTIONS: Transaction[] = [
-  { id: 'txn-1', userId: 'user-1', type: 'Deposit', amount: 30000, txHash: '0x...abc', date: '2023-10-14' },
-  { id: 'txn-1a', userId: 'user-1', type: 'Investment', amount: 10000, txHash: '0x...123', date: '2023-10-15', investmentId: 'inv-1' },
-  { id: 'txn-2', userId: 'user-1', type: 'Bonus', amount: 600, txHash: '0x...456', date: '2023-10-25' },
-  { id: 'txn-3', userId: 'user-1', type: 'Withdrawal', amount: 2000, txHash: '0x...789', date: '2023-11-01' },
-  { id: 'txn-4', userId: 'user-2', type: 'Deposit', amount: 15000, txHash: '0x...def', date: '2023-10-24' },
-  { id: 'txn-5', userId: 'user-2', type: 'Investment', amount: 15000, txHash: '0x...ghi', date: '2023-10-25', investmentId: 'inv-3' },
+  // FIX: Added missing 'created_at' property to satisfy the Transaction type.
+  { id: 'txn-1', userId: 'user-1', type: 'Deposit', amount: 30000, txHash: '0x...abc', date: '2023-10-14', created_at: '2023-10-14T00:00:00Z' },
+  { id: 'txn-1a', userId: 'user-1', type: 'Investment', amount: 10000, txHash: '0x...123', date: '2023-10-15', investmentId: 'inv-1', created_at: '2023-10-15T00:00:00Z' },
+  { id: 'txn-2', userId: 'user-1', type: 'Bonus', amount: 600, txHash: '0x...456', date: '2023-10-25', created_at: '2023-10-25T00:00:00Z' },
+  { id: 'txn-3', userId: 'user-1', type: 'Withdrawal', amount: 2000, txHash: '0x...789', date: '2023-11-01', created_at: '2023-11-01T00:00:00Z' },
+  { id: 'txn-4', userId: 'user-2', type: 'Deposit', amount: 15000, txHash: '0x...def', date: '2023-10-24', created_at: '2023-10-24T00:00:00Z' },
+  { id: 'txn-5', userId: 'user-2', type: 'Investment', amount: 15000, txHash: '0x...ghi', date: '2023-10-25', investmentId: 'inv-3', created_at: '2023-10-25T00:00:00Z' },
 ];
 
 export const MOCK_BONUSES: Bonus[] = [
-  { id: 'bns-1', userId: 'user-1', type: 'Instant', sourceId: 'inv-3', amount: 600, date: '2023-10-25', read: true },
-  { id: 'bns-2', userId: 'user-1', type: 'Leadership', sourceId: 'rank-5', amount: 10000, date: '2023-11-01', read: false },
-  { id: 'bns-3', userId: 'user-2', type: 'Instant', sourceId: 'inv-3', amount: 600, date: '2023-10-25', read: true },
+  // FIX: Added missing 'created_at' property to satisfy the Bonus type.
+  { id: 'bns-1', userId: 'user-1', type: 'Instant', sourceId: 'inv-3', amount: 600, date: '2023-10-25', read: true, created_at: '2023-10-25T00:00:00Z' },
+  { id: 'bns-2', userId: 'user-1', type: 'Leadership', sourceId: 'rank-5', amount: 10000, date: '2023-11-01', read: false, created_at: '2023-11-01T00:00:00Z' },
+  { id: 'bns-3', userId: 'user-2', type: 'Instant', sourceId: 'inv-3', amount: 600, date: '2023-10-25', read: true, created_at: '2023-10-25T00:00:00Z' },
 ];
 
 export const MOCK_NEWS: NewsPost[] = [
-    { id: 'news-1', title: 'IGI Partnership Program Hits New Milestones!', content: 'We are thrilled to announce that our platform has surpassed 10,000 active investors. Thank you for your continued trust and support.', date: '2023-11-28', author: 'Admin User' },
-    { id: 'news-2', title: 'Upcoming System Maintenance', content: 'Please be advised that we will have a scheduled system maintenance on December 5th from 2:00 AM to 4:00 AM UTC to improve our infrastructure.', date: '2023-11-25', author: 'Admin User' },
-    { id: 'news-3', title: 'New Leadership Bonus Tier Unlocked', content: 'Congratulations to all our L7 partners! A new tier of leadership bonuses has been activated. Check your wallet for details.', date: '2023-11-20', author: 'Admin User' },
+    // FIX: Added missing 'created_at' property to satisfy the NewsPost type.
+    { id: 'news-1', title: 'IGI Partnership Program Hits New Milestones!', content: 'We are thrilled to announce that our platform has surpassed 10,000 active investors. Thank you for your continued trust and support.', date: '2023-11-28', author: 'Admin User', created_at: '2023-11-28T00:00:00Z' },
+    { id: 'news-2', title: 'Upcoming System Maintenance', content: 'Please be advised that we will have a scheduled system maintenance on December 5th from 2:00 AM to 4:00 AM UTC to improve our infrastructure.', date: '2023-11-25', author: 'Admin User', created_at: '2023-11-25T00:00:00Z' },
+    { id: 'news-3', title: 'New Leadership Bonus Tier Unlocked', content: 'Congratulations to all our L7 partners! A new tier of leadership bonuses has been activated. Check your wallet for details.', date: '2023-11-20', author: 'Admin User', created_at: '2023-11-20T00:00:00Z' },
 ];
 
 export const ACHIEVEMENTS_LIST: Achievement[] = [

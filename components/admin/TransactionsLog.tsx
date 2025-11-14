@@ -3,7 +3,10 @@ import { useAppContext } from '../../hooks/useAppContext';
 import { useLocalization } from '../../hooks/useLocalization';
 import { Transaction, Bonus } from '../../types';
 
-type AllFinancialEvent = (Transaction | (Bonus & { txHash: string, reason?: string })) & { eventType: 'Transaction' | 'Bonus' };
+// Fix: Use a discriminated union for AllFinancialEvent to allow for type-safe access to properties.
+type TransactionEvent = Transaction & { eventType: 'Transaction' };
+type BonusEvent = Bonus & { txHash: string; eventType: 'Bonus' };
+type AllFinancialEvent = TransactionEvent | BonusEvent;
 
 const TransactionsLog: React.FC = () => {
   const { transactions, bonuses, users } = useAppContext();
@@ -11,12 +14,12 @@ const TransactionsLog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const allEvents = useMemo(() => {
-    const bonusEvents: AllFinancialEvent[] = bonuses.map(b => ({
+    const bonusEvents: BonusEvent[] = bonuses.map(b => ({
       ...b,
       txHash: `bonus-${b.id}`,
       eventType: 'Bonus',
     }));
-    const transactionEvents: AllFinancialEvent[] = transactions.map(t => ({
+    const transactionEvents: TransactionEvent[] = transactions.map(t => ({
       ...t,
       eventType: 'Transaction',
     }));
@@ -87,7 +90,8 @@ const TransactionsLog: React.FC = () => {
                   ${event.amount.toLocaleString()}
                 </td>
                 <td className="px-6 py-4 text-gray-400 text-xs">
-                    {event.reason || event.txHash || event.sourceId}
+                    {/* Fix: Use discriminated union to safely access properties */}
+                    {event.eventType === 'Transaction' ? (event.reason || event.txHash || event.investmentId) : event.sourceId}
                 </td>
               </tr>
             ))}

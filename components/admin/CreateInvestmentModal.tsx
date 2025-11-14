@@ -59,7 +59,8 @@ const CreateInvestmentModal: React.FC<CreateInvestmentModalProps> = ({ onClose }
       return;
     }
     setError('');
-    addInvestmentForUser(selectedUserId, amount, selectedAssetId, investmentType);
+    // Fix: Add the missing 5th argument 'source', defaulting to 'deposit'.
+    addInvestmentForUser(selectedUserId, amount, selectedAssetId, investmentType, 'deposit');
     onClose();
   };
 

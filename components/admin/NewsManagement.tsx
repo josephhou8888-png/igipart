@@ -15,7 +15,8 @@ const NewsManagement: React.FC = () => {
         e.preventDefault();
         if (!title || !content || !currentUser) return;
         
-        const newPost: Omit<NewsPost, 'id'> = {
+        // FIX: Corrected the type to exclude 'created_at' as it's not provided here and matches the function signature.
+        const newPost: Omit<NewsPost, 'id' | 'created_at'> = {
             title,
             content,
             author: currentUser.name,

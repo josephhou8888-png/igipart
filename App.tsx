@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+
+
+import React, { useState, useEffect } from 'react';
+// FIX: useAppContext is imported from hooks, not context.
 import { AppContextProvider } from './context/AppContext';
+import { useAppContext } from './hooks/useAppContext';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import AdminDashboard from './components/admin/AdminDashboard';
 import Wallet from './components/Wallet';
 import Login from './components/Login';
+import SignUp from './components/SignUp';
 import Leaderboard from './components/Leaderboard';
 import Profile from './components/Profile';
 import Resources from './components/Resources';
@@ -13,25 +18,23 @@ import UserManual from './components/UserManual';
 import Projects from './components/Projects';
 import ProjectDetail from './components/ProjectDetail';
 import Network from './components/Network';
-import { View, User } from './types';
+import { View } from './types';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const { currentUser, loading, logout } = useAppContext();
   const [currentView, setCurrentView] = useState<View>(View.DASHBOARD);
   const [isAdminView, setIsAdminView] = useState(false);
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+  const [authView, setAuthView] = useState<'login' | 'signup'>('login');
 
-  const handleLogin = (user: User) => {
-    setCurrentUser(user);
-  };
+  useEffect(() => {
+    if (currentUser) {
+      setCurrentView(View.DASHBOARD);
+      setIsAdminView(false);
+    }
+  }, [currentUser]);
 
-  const handleLogout = () => {
-    setCurrentUser(null);
-    setCurrentView(View.DASHBOARD);
-    setIsAdminView(false);
-  };
-  
   const navigateToProjects = () => {
     setSelectedProjectId(null);
     setCurrentView(View.PROJECTS);
@@ -66,35 +69,49 @@ const App: React.FC = () => {
     }
   };
 
-  if (!currentUser) {
+  if (loading) {
     return (
-      <AppContextProvider currentUser={null} logout={() => {}}>
-        <Login onLogin={handleLogin} />
-      </AppContextProvider>
+      <div className="flex items-center justify-center h-screen bg-gray-900">
+        <div className="text-white text-xl">Loading Application...</div>
+      </div>
+    );
+  }
+
+  if (!currentUser) {
+    return authView === 'login' ? (
+      <Login onSwitchToSignUp={() => setAuthView('signup')} />
+    ) : (
+      <SignUp onSwitchToLogin={() => setAuthView('login')} />
     );
   }
 
   return (
-    <AppContextProvider currentUser={currentUser} logout={handleLogout}>
-      <div className="relative flex h-screen bg-gray-900 text-gray-200 font-sans">
-        <Sidebar 
-          currentView={currentView} 
-          setCurrentView={(view) => {
-            setSelectedProjectId(null);
-            setCurrentView(view);
-          }} 
-          isAdminView={isAdminView} 
-          setIsAdminView={setIsAdminView}
-          isMobileOpen={isMobileSidebarOpen}
-          setIsMobileOpen={setIsMobileSidebarOpen}
-        />
-        <div className="flex-1 flex flex-col overflow-hidden">
-          <Header onMenuClick={() => setIsMobileSidebarOpen(true)} />
-          <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-900 p-4 sm:p-6 lg:p-8">
-            {renderContent()}
-          </main>
-        </div>
+    <div className="relative flex h-screen bg-gray-900 text-gray-200 font-sans">
+      <Sidebar 
+        currentView={currentView} 
+        setCurrentView={(view) => {
+          setSelectedProjectId(null);
+          setCurrentView(view);
+        }} 
+        isAdminView={isAdminView} 
+        setIsAdminView={setIsAdminView}
+        isMobileOpen={isMobileSidebarOpen}
+        setIsMobileOpen={setIsMobileSidebarOpen}
+      />
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <Header onMenuClick={() => setIsMobileSidebarOpen(true)} />
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-900 p-4 sm:p-6 lg:p-8">
+          {renderContent()}
+        </main>
       </div>
+    </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <AppContextProvider>
+      <AppContent />
     </AppContextProvider>
   );
 };
